@@ -1,9 +1,10 @@
 """The example sensor integration."""
 import logging
-import paramiko,re
-
+import re
 from datetime import timedelta
 from datetime import datetime
+
+import paramiko
 
 DOMAIN = "eap225"
 SCAN_INTERVAL = timedelta(seconds=2)
@@ -11,6 +12,7 @@ SCAN_INTERVAL = timedelta(seconds=2)
 _LOGGER = logging.getLogger(__name__)
 
 def setup(hass, config):
+
     _LOGGER.debug("starting")
     
     api = EAP225Client(config)
