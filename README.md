@@ -16,11 +16,15 @@ Then, in configuration.yaml, add the following:
 ```
 eap225:
   # host is the ip of the EAP225 access point
-  host: 192.168.3.4
+  host: <<a.b.c.d>>
   # then you need to provide username and password to log into it (the same credentials you used in the web interface)
-  username: abcdefg
-  password: hijklm
+  username: <<example_username>>
+  password: <<example_password>>
+  cli_omada: true
+  scan_interval: 15 //Min accepted interval is 15
 ```
+
+The EAP 225 Series is shipped with different versions. Starting with EAP225 V4 - Firmware Version 5.2 the cli received a major update which is not compatible with the old ssh commands. If you have the new cli version please set "cli_omada: true" else "cli_omada: false"
 
 Then, in your binary sensors (either the binary_sensors: section of configuration.yaml or your binary_sensors.yaml file)
 ```

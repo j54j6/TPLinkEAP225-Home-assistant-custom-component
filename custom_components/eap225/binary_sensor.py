@@ -3,13 +3,14 @@ import logging
 from homeassistant.helpers.entity import Entity
 from . import DOMAIN
 from homeassistant.components.binary_sensor import BinarySensorDeviceClass
+from datetime import timedelta
 
+SCAN_INTERVAL = timedelta(seconds=15)
 _LOGGER = logging.getLogger(__name__)
 
 def setup_platform(hass, config, add_devices, discovery_info=None):
   sensor = eap225Sensor(hass,config)
   add_devices([sensor])
-
 
 class eap225Sensor(Entity):
   
@@ -18,7 +19,7 @@ class eap225Sensor(Entity):
     self._name = config.get("name")
     self.api = hass.data[DOMAIN]
     self.update()
-  
+    
   @property
   def is_on(self):
     """Return true if the binary sensor is on."""
